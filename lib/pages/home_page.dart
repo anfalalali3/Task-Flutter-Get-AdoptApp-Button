@@ -48,6 +48,14 @@ class HomePage extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(), // <- Here
                 itemCount: pets.length,
                 itemBuilder: (context, index) => PetCard(pet: pets[index])),
+            Consumer<PetsProvider>(
+              builder: (context, petsProvider, child) => ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(), // <- Here
+                  itemCount: petsProvider.pets.length,
+                  itemBuilder: (context, index) =>
+                      PetCard(pet: PetsProvider.pets[index])),
+            ),
           ],
         ),
       ),

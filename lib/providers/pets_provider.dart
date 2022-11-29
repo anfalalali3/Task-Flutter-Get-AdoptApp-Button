@@ -1,5 +1,6 @@
 import 'package:adopt_app/models/pet.dart';
 import 'package:flutter/material.dart';
+import 'package:adopt_app/services/pet_services.dart';
 
 class PetsProvider extends ChangeNotifier {
   List<Pet> pets = [
@@ -9,4 +10,7 @@ class PetsProvider extends ChangeNotifier {
         age: 2,
         gender: "male")
   ];
+  Future<void> getPets() async {
+    pets = await PetsServices().getPets();
+  }
 }
