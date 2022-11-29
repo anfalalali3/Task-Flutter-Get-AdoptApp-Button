@@ -21,7 +21,9 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.read<PetsProvider>().getPetsProvider();
+                },
                 child: const Padding(
                   padding: EdgeInsets.all(12.0),
                   child: Text("Get All pets"),
@@ -46,22 +48,22 @@ class HomePage extends StatelessWidget {
                       (MediaQuery.of(context).size.height),
                 ),
                 physics: const NeverScrollableScrollPhysics(), // <- Here
-                itemCount: pets.length,
+                itemCount: context.watch<PetsProvider>().pets.length,
                 itemBuilder: (context, index) => PetCard(pet: pets[index])),
-            Consumer<PetsProvider>(
-              builder: (context, petsProvider, child) => ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(), // <- Here
-                  itemCount: petsProvider.pets.length,
-                  itemBuilder: (context, index) =>
-                      PetCard(pet: PetsProvider.pets[index])),
-            ),
-            
+            //     Consumer<PetsProvider>(
+            //       builder: (context, petsProvider, child) => ListView.builder(
+            //           shrinkWrap: true,
+            //           physics: const NeverScrollableScrollPhysics(), // <- Here
+            //           itemCount: petsProvider.pets.length,
+            //           itemBuilder: (context, index) =>
+            //               PetCard(pet: PetsProvider.pets[index])),
+            //     ),
+
+            //   ],
+            //   child: ElevatedButton(
+            // onPressed: () {
+            // GoRouter.of(context).push('/add');
           ],
-          child: ElevatedButton(
-        onPressed: () {
-        GoRouter.of(context).push('/add');
-},
         ),
       ),
     );

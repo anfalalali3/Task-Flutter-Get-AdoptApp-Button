@@ -26,20 +26,17 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  final _router = GoRouter(
-    routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const HomePage(),
-      ),
-      GoRoute(
-        path: '/update/:petId',
-        builder: ((context, state) {
-          final pet = Provider.of<PetsProvider>(context).pets.firstWhere(
-              (pet) => pet.id.toString() == (state.params['petId']!));
-          return UpdatePage(pet: pet);
-        }),
-      ),
-    ],
-  );
+  final _router = GoRouter(routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const HomePage(),
+    ),
+    // GoRoute(
+    //   path: '/update/:petId',
+    //   builder: ((context, state) {
+    //     final pet = Provider.of<PetsProvider>(context).pets.firstWhere(
+    //         (pet) => pet.id.toString() == (state.params['petId']!));
+    //     return UpdatePage(pet: pet);
+    //   }),
+  ]);
 }
