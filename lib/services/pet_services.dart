@@ -19,4 +19,22 @@ class DioClient {
         (response.data as List).map((Pet) => Pet.fromJson1(Pet).toList());
     return pets;
   }
+
+  Future<Pet> createPet({required Pet book}) async {
+    late Pet retrivedPet;
+    try {
+      FormData data = FormData.fromMap({
+        "title": Pet.title,
+        "description": Pet.description,
+        "image": await MultipartFile.fromFile(
+          Pet.image,
+        ),
+      });
+      Response response = await Pets_dio.post(_baseUrl + '/pets', data: data);
+      retrivedPet = Pet.fromJson(response.data);
+    } on DioError catch (error) {
+      print(error);
+    }
+    return retrivedPet;
+  }
 }

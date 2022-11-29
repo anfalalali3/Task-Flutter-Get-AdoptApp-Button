@@ -56,7 +56,12 @@ class HomePage extends StatelessWidget {
                   itemBuilder: (context, index) =>
                       PetCard(pet: PetsProvider.pets[index])),
             ),
+            
           ],
+          child: ElevatedButton(
+        onPressed: () {
+        GoRouter.of(context).push('/add');
+},
         ),
       ),
     );

@@ -30,7 +30,9 @@ class PetCard extends StatelessWidget {
                   Text("Age: ${pet.age}"),
                   Text("Gender: ${pet.gender}"),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GoRoute.of(context).push('/update/${pet.id}');
+                    },
                     child: const Text("Adopt"),
                   ),
                   Row(

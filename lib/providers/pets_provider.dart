@@ -13,4 +13,8 @@ class PetsProvider extends ChangeNotifier {
   Future<void> getPets() async {
     pets = await PetsServices().getPets();
   }
+
+  void createPet(Pet pet) async {
+    await PetsServices().createPet(Pet: pet);
+  }
 }
